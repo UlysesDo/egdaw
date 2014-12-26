@@ -148,7 +148,7 @@ p.hidePause = function() {
 };
 
 p.showGameOver = function( score ) {
-    window.location.href="objc://"+"gameOver:/"+score; // by michael
+    // window.location.href="objc://"+"gameOver:/"+score; // by michael
 	this.overBorder.visible = true;
 	this.overBack.visible = true;
 	this.labelGameOver.visible = true;
