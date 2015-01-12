@@ -296,8 +296,9 @@ function callbackHandler(value) {//decamincow
     if(value == null && !isNaN(value)){
         temp = 0;
     }
-    if((value == null && isNaN(value)) || (isNaN(value) && value == "")){
+    else if((value == null && isNaN(value)) || (isNaN(value) && value == "")){
         temp = "0";
     }
+    else {temp = value;}
     localStorage["Jumper.bestScore"] = temp;
 }
