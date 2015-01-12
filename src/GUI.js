@@ -1,4 +1,6 @@
 GUI = function (game) {
+    var temp;
+    window.location.href="weiyou://getData/jumper_hiScore/callbackHandler"; // by decamincow
     this.game = game;
     Phaser.Group.call(this, game);
 
@@ -158,13 +160,14 @@ p.showGameOver = function( score ) {
 	this.labelBest.visible = true;
 	this.labelBestValue.visible = true;
 	this.buttonAgain.visible = true;
-	this.buttonShare.visible = true;
-	this.buttonMore.visible = true;
+	this.buttonShare.visible = false; //decamincow
+	this.buttonMore.visible = false;  //decamincow
     this.medal.visible = true;
 
 	var best = JSON.parse( localStorage["Jumper.bestScore"] );
 	
 	 if( score > best ) {
+         window.location.href="weiyou://putData/jumper_hiScore/" + score; // by decamincow
 		best=score;
 	 	localStorage["Jumper.bestScore"] = score;
 	}
@@ -286,3 +289,15 @@ ColorButton.prototype = Object.create(Phaser.Sprite.prototype);
 ColorButton.prototype.constructor = ColorButton;
 
 var p = ColorButton.prototype;
+
+function callbackHandler(value) {//decamincow
+//    alert("callbackHandlervalue=" + value );
+    
+    if(value == null && !isNaN(value)){
+        temp = 0;
+    }
+    if((value == null && isNaN(value)) || (isNaN(value) && value == "")){
+        temp = "0";
+    }
+    localStorage["Jumper.bestScore"] = temp;
+}
